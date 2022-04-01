@@ -19,9 +19,24 @@ const result = document.querySelector('.lorem-text')
 form.addEventListener('submit', (e) => {
   e.preventDefault()
   const value  = parseInt(amount.value)
+  const random = Math.floor(Math.random() * text.length)
   
   if (isNaN(value) || value < 0 || value > 9) {
-      result.innerHTML = `<p class="result">${text[0]}</p>`
+      result.innerHTML = `<p class="result">${text[random]}</p>`
   }
+
+  else {
+    
+    paragraphs = text.slice(0, value)
+    let outputArray = paragraphs.map( (paragraph) => {
+      return `<p class="result">${paragraph}</p>`
+    })
+      console.log(outputArray)
+      outputString = outputArray.join("")
+      result.innerHTML = outputString
+
+    
+  }
+    
   
 })
